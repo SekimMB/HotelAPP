@@ -11,14 +11,23 @@ public class Client {
     Integer id;
     @Column(name = "name")
     String name;
+    @Column(name = "surname")
+    String surname;
+    @Column(name = "email")
+    String email;
+    @Column(name = "account_number")
+    int account_number;
+    @Column(name = "phone")
+    int phone;
 
     public Client(){};
 
-
-
-    public Client(Integer id, String name) {
-        this.id = id;
+    public Client(String name, String surname, String email, int account_number, int phone) {
         this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.account_number = account_number;
+        this.phone = phone;
     }
 
     public Integer getId() {
@@ -29,6 +38,22 @@ public class Client {
         return name;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getAccount_number() {
+        return account_number;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -37,4 +62,19 @@ public class Client {
         this.name = name;
     }
 
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setAccount_number(int account_number) {
+        this.account_number = account_number;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
 }

@@ -29,17 +29,17 @@ INSERT INTO loggedClient VALUES (1, 'devil666', 'qwerty123','Daniel', 'Danielows
 INSERT INTO loggedClient VALUES (2, 'angel333', 'asdfg321', 'Andrzej', 'Andrzejewski', 'andand21@interia.pl', 65783, 123876045);
 INSERT INTO loggedClient VALUES (3, 'trol123', 'zxcvb987', 'Maciej', 'Maciejewski', 'macmac654@gmail.com', 65734, 987654765);
 
-DROP TABLE IF EXISTS recepcionist;
-CREATE TABLE recepcionist (
+DROP TABLE IF EXISTS receptionist;
+CREATE TABLE receptionist (
     id_employee INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(20),
     surname VARCHAR(20)
 );
 
-INSERT INTO recepcionist VALUES (1, 'Bogdan', 'Bogdanwoski');
-INSERT INTO recepcionist VALUES (2, 'Zbigniew', 'Zbigniewowski');
-INSERT INTO recepcionist VALUES (3, 'Karolina', 'Karolinowska');
-INSERT INTO recepcionist VALUES (4, 'Marcin', 'Marciniewski');
+INSERT INTO receptionist VALUES (1, 'Bogdan', 'Bogdanwoski');
+INSERT INTO receptionist VALUES (2, 'Zbigniew', 'Zbigniewowski');
+INSERT INTO receptionist VALUES (3, 'Karolina', 'Karolinowska');
+INSERT INTO receptionist VALUES (4, 'Marcin', 'Marciniewski');
 
 DROP TABLE IF EXISTS admin;
 CREATE TABLE admin (
