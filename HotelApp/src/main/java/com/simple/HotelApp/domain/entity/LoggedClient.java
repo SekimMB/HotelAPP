@@ -21,9 +21,9 @@ public class LoggedClient {
     @Column(name = "email")
     String email;
     @Column(name = "bank_acc_number")
-    int bank_acc_number;
+    Integer bank_acc_number;
     @Column(name = "phone")
-    int phone;
+    Integer phone;
 
     public LoggedClient(){};
 

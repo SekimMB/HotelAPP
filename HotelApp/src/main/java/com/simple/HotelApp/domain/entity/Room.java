@@ -1,6 +1,7 @@
 package com.simple.HotelApp.domain.entity;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
 @Table(name="Room")
@@ -13,15 +14,15 @@ public class Room {
     @Column(name = "state")
     String state;
     @Column(name = "price")
-    String price;
+    double price;
     @Column(name = "size")
     String size;
     @Column(name = "occupant")
-    String occupant;
+    Integer occupant;
 
     public Room(){};
 
-    public Room(String state, String price, String size, String occupant) {
+    public Room(String state, double price, String size, Integer occupant) {
         this.state = state;
         this.price = price;
         this.size = size;
@@ -44,11 +45,11 @@ public class Room {
         this.state = state;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -60,11 +61,11 @@ public class Room {
         this.size = size;
     }
 
-    public String getOccupant() {
+    public Integer getOccupant() {
         return occupant;
     }
 
-    public void setOccupant(String occupant) {
+    public void setOccupant(Integer occupant) {
         this.occupant = occupant;
     }
 }

@@ -16,9 +16,9 @@ public class Client {
     @Column(name = "email")
     String email;
     @Column(name = "account_number")
-    int account_number;
+    Integer account_number;
     @Column(name = "phone")
-    int phone;
+    Integer phone;
 
     public Client(){};
 

@@ -1,6 +1,7 @@
 package com.simple.HotelApp.domain.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name="Reservation")
@@ -15,13 +16,13 @@ public class Reservation {
     @Column(name = "id_room")
     Integer id_room;
     @Column(name = "start")
-    String start;
+    Date start;
     @Column(name = "end")
-    String end;
+    Date end;
 
     public Reservation(){};
 
-    public Reservation(Integer id_client, Integer id_room, String start, String end) {
+    public Reservation(Integer id_client, Integer id_room, Date start, Date end) {
         this.id_client = id_client;
         this.id_room = id_room;
         this.start = start;
@@ -52,19 +53,19 @@ public class Reservation {
         this.id_room = id_room;
     }
 
-    public String getStart() {
+    public Date getStart() {
         return start;
     }
 
-    public void setStart(String start) {
+    public void setStart(Date start) {
         this.start = start;
     }
 
-    public String getEnd() {
+    public Date getEnd() {
         return end;
     }
 
-    public void setEnd(String end) {
+    public void setEnd(Date end) {
         this.end = end;
     }
 }
