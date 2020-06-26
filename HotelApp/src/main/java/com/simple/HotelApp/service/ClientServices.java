@@ -1,11 +1,13 @@
 package com.simple.HotelApp.service;
 
 import com.simple.HotelApp.domain.DTO.ClientEditDTO;
+import com.simple.HotelApp.domain.DTO.ReceiptDTO;
 import com.simple.HotelApp.domain.DTO.ShowRoomDTO;
 import com.simple.HotelApp.domain.entity.Client;
 import com.simple.HotelApp.domain.entity.LoggedClient;
 import com.simple.HotelApp.domain.entity.Reservation;
 import com.simple.HotelApp.domain.entity.Room;
+import com.simple.HotelApp.domain.exception.NoUserFoundException;
 import com.simple.HotelApp.domain.repository.ClientRepository;
 import com.simple.HotelApp.domain.repository.LoggedClientRepository;
 import com.simple.HotelApp.domain.repository.ReservationRepository;
@@ -13,7 +15,6 @@ import com.simple.HotelApp.domain.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -82,24 +83,26 @@ public class ClientServices {
         return showAvailableRooms;
     }
 
-    public void logIn(String login,String password){
+
+    public int logIn(String login,String password){
         // see jwc security token for implementation
         // without security just download all of data of client with id
-        Optional<Client> loggedclient = logged_client.findAll().stream().
-                filter(l->l.getLogin()==login && l.getPassword()==password);
+        // TODO implement it in controller somehow
+      return logged_client.findAll().stream()
+              .filter(e->e.getPassword()==password && e.getLogin()==login)
+              .findFirst().map(user->user.getId())
+              .orElseThrow(NoUserFoundException::new);
     }
 
-    public void logOut(){
-        // see jwc security token for implementation
-        // without security reset Client
-        Optional<Client> loggedclient = temp_client.findById(1);
-    }
 
     public List<Reservation> getPastReservations(Integer id){
         List<Reservation> clientreservation = reservations.findAll();
-       return clientreservation.stream().filter(e->e.getId_client()==id).collect(Collectors.toList());
+       return clientreservation.stream().filter(e->e.getId_client()==id)
+               .filter(e->e.getEnd().toLocalDate().isBefore(LocalDate.now()))
+               .collect(Collectors.toList());
     }
-    public List<Reservation> getCurrentReservations(Integer id){
+
+    public List<Reservation> getActiveReservations(Integer id){
         List<Reservation> clientreservation = reservations.findAll();
         return clientreservation.stream()
                 .filter(e->e.getId_client()==id)
@@ -107,10 +110,27 @@ public class ClientServices {
                 .collect(Collectors.toList());
     }
 
-    public void getPaymentHistory(Integer id){
-        List <Reservation> paymenthistory = getPastReservations(id);
-        // to do, get price of all the rooms
-        List<Reservation>transactionHistory = paymenthistory.forEach(e->e.getId_room());
+    public List<ReceiptDTO> getPaymentHistory(Integer id){
+        // TODO, get price of all the rooms
+        List <Reservation> pastreservations = getPastReservations(id);
+
+        List <ReceiptDTO> roomReceipt = pastreservations.stream().map(reservations->{
+            ReceiptDTO newreceipt = new ReceiptDTO();
+            newreceipt.setId_room(reservations.getId_room());
+            newreceipt.setStart(reservations.getStart());
+            newreceipt.setEnd(reservations.getEnd());
+            return newreceipt;
+        }).collect(Collectors.toList());
+
+        return roomReceipt.stream().map(reserve->{
+            Optional<Room> reserveRoom = rooms.findById(reserve.getId_room());
+            double price = reserveRoom.map(room->{
+                return room.getPrice();
+            }).orElse(0.0);
+        reserve.setPrice(price);
+        return reserve;
+        }).collect(Collectors.toList());
+
 
     }
 

@@ -1,13 +1,8 @@
 package com.simple.HotelApp.service;
 
 import com.simple.HotelApp.domain.DTO.AddRoomDTO;
-import com.simple.HotelApp.domain.DTO.ClientEditDTO;
-import com.simple.HotelApp.domain.entity.Admin;
-import com.simple.HotelApp.domain.entity.Client;
-import com.simple.HotelApp.domain.entity.LoggedClient;
 import com.simple.HotelApp.domain.entity.Room;
 import com.simple.HotelApp.domain.repository.AdminRepository;
-import com.simple.HotelApp.domain.repository.ClientRepository;
 import com.simple.HotelApp.domain.repository.LoggedClientRepository;
 import com.simple.HotelApp.domain.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;

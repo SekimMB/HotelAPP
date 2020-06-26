@@ -21,13 +21,14 @@ public class ReceptionistServices {
     }
 
     public void addClientData(ClientEditDTO cedit){
-        Client clientToUpdate = temp_client.getOne(cedit.getId());
-        clientToUpdate.setName(cedit.getName());
-        temp_client.save(clientToUpdate);
-    }
-
-    public void takePayment(Integer id, double payment){
-        
+        Client newclient = new Client();
+        newclient.setId(cedit.getId());
+        newclient.setPhone(cedit.getPhone());
+        newclient.setEmail(cedit.getEmail());
+        newclient.setSurname(cedit.getSurname());
+        newclient.setName(cedit.getName());
+        newclient.setAccount_number(cedit.getBank_acc_number());
+        temp_client.save(newclient);
     }
 
     public void checkIn(Integer clientId,Integer roomId){

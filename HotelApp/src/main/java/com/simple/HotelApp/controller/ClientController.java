@@ -1,7 +1,10 @@
 package com.simple.HotelApp.controller;
 
 import com.simple.HotelApp.domain.DTO.ClientEditDTO;
+import com.simple.HotelApp.domain.DTO.ReceiptDTO;
+import com.simple.HotelApp.domain.DTO.ShowRoomDTO;
 import com.simple.HotelApp.domain.entity.Client;
+import com.simple.HotelApp.domain.entity.Reservation;
 import com.simple.HotelApp.service.ClientServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,5 +55,36 @@ public class ClientController {
         cService.editClient(newclient);
         return "Works";
     }
+
+    @CrossOrigin
+    @GetMapping(value ="/client/rooms")
+    public List<ShowRoomDTO> getAvailableRooms(){
+        return cService.getAvailableRooms();
+    }
+
+    @CrossOrigin
+    @GetMapping(value ="/client/login")
+    public int logIn(@RequestParam String login, String password){
+        return cService.logIn(login,password);
+    }
+
+    @CrossOrigin
+    @GetMapping(value ="/client/past_reservations{id}")
+    public List<Reservation> getPastReservations(@PathVariable Integer id){
+        return cService.getPastReservations(id);
+    }
+
+    @CrossOrigin
+    @GetMapping(value ="/client/active_reservations{id}")
+    public List<Reservation> getActiveReservations(@PathVariable Integer id){
+        return cService.getActiveReservations(id);
+    }
+
+    @CrossOrigin
+    @GetMapping(value ="/client/paymenthistory{id}")
+    public List<ReceiptDTO> getPaymentHistory(@PathVariable Integer id){
+        return cService.getPaymentHistory(id);
+    }
+
 
 }
