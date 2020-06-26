@@ -27,7 +27,7 @@ public class ReceptionistServices {
     }
 
     public void takePayment(Integer id, double payment){
-
+        
     }
 
     public void checkIn(Integer clientId,Integer roomId){
