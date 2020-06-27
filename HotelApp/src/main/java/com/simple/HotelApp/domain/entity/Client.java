@@ -16,13 +16,13 @@ public class Client {
     @Column(name = "email")
     String email;
     @Column(name = "account_number")
-    Integer account_number;
+    String account_number;
     @Column(name = "phone")
-    Integer phone;
+    String phone;
 
     public Client(){};
 
-    public Client(String name, String surname, String email, int account_number, int phone) {
+    public Client(String name, String surname, String email, String account_number, String phone) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -46,11 +46,11 @@ public class Client {
         return email;
     }
 
-    public int getAccount_number() {
+    public String getAccount_number() {
         return account_number;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -70,11 +70,11 @@ public class Client {
         this.email = email;
     }
 
-    public void setAccount_number(int account_number) {
+    public void setAccount_number(String account_number) {
         this.account_number = account_number;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }

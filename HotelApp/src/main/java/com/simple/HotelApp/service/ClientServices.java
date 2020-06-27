@@ -39,6 +39,10 @@ public class ClientServices {
     public void addClient(ClientEditDTO client1){
         Client test = new Client();
         test.setName(client1.getName());
+        test.setAccount_number(client1.getBank_acc_number());
+        test.setSurname(client1.getSurname());
+        test.setEmail(client1.getEmail());
+        test.setPhone(client1.getPhone());
         temp_client.save(test);
     }
 
@@ -66,11 +70,10 @@ public class ClientServices {
     }
 
     public List<ShowRoomDTO> getAvailableRooms(){
-        List<ShowRoomDTO> showAvailableRooms = null;
+        List<ShowRoomDTO> showAvailableRooms;
         List<Room> availablerooms = rooms.findAll();
         availablerooms = availablerooms.stream()
-                .filter(e->e.getOccupant()==null)
-                .filter(e->e.getState()=="functional").collect(Collectors.toList());
+                .filter(e-> e.getState().equals("Free")).collect(Collectors.toList());
         showAvailableRooms = availablerooms.stream()
                 .map(newroom->{
                     ShowRoomDTO showroom = new ShowRoomDTO();
@@ -124,9 +127,9 @@ public class ClientServices {
 
         return roomReceipt.stream().map(reserve->{
             Optional<Room> reserveRoom = rooms.findById(reserve.getId_room());
-            double price = reserveRoom.map(room->{
+            String price = reserveRoom.map(room->{
                 return room.getPrice();
-            }).orElse(0.0);
+            }).orElse("0.0");
         reserve.setPrice(price);
         return reserve;
         }).collect(Collectors.toList());

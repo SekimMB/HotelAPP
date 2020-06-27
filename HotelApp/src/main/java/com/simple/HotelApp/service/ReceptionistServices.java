@@ -4,20 +4,19 @@ import com.simple.HotelApp.domain.DTO.ClientEditDTO;
 import com.simple.HotelApp.domain.entity.Client;
 import com.simple.HotelApp.domain.entity.Room;
 import com.simple.HotelApp.domain.repository.ClientRepository;
-import com.simple.HotelApp.domain.repository.ReservationRepository;
 import com.simple.HotelApp.domain.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ReceptionistServices {
     private final ClientRepository temp_client;
     private final RoomRepository rooms;
-    private final ReceptionistServices reception;
 
     @Autowired
-    public ReceptionistServices(ClientRepository temp_client, RoomRepository rooms, ReceptionistServices reception) {
+    public ReceptionistServices(ClientRepository temp_client, RoomRepository rooms) {
         this.temp_client = temp_client;
         this.rooms = rooms;
-        this.reception = reception;
     }
 
     public void addClientData(ClientEditDTO cedit){

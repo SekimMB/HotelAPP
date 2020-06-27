@@ -5,7 +5,7 @@ import java.sql.Date;
 public class ReceiptDTO {
 
     int id_room;
-    double price;
+    String price;
     Date start,end;
 
     public ReceiptDTO(){};
@@ -18,11 +18,11 @@ public class ReceiptDTO {
         this.id_room = id_room;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

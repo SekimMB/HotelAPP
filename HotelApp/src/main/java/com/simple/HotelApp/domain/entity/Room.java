@@ -14,7 +14,7 @@ public class Room {
     @Column(name = "state")
     String state;
     @Column(name = "price")
-    double price;
+    String price;
     @Column(name = "size")
     String size;
     @Column(name = "occupant")
@@ -22,7 +22,7 @@ public class Room {
 
     public Room(){};
 
-    public Room(String state, double price, String size, Integer occupant) {
+    public Room(String state, String price, String size, Integer occupant) {
         this.state = state;
         this.price = price;
         this.size = size;
@@ -45,11 +45,11 @@ public class Room {
         this.state = state;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

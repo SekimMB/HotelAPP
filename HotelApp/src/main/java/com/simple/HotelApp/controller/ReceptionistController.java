@@ -1,12 +1,10 @@
 package com.simple.HotelApp.controller;
 
 import com.simple.HotelApp.domain.DTO.ClientEditDTO;
-import com.simple.HotelApp.domain.entity.Client;
 import com.simple.HotelApp.service.ReceptionistServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping(value="/api")

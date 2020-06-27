@@ -15,18 +15,18 @@ public class Reservation {
     Integer id_client;
     @Column(name = "id_room")
     Integer id_room;
-    @Column(name = "start")
-    Date start;
-    @Column(name = "end")
-    Date end;
+    @Column(name = "start_date")
+    Date start_date;
+    @Column(name = "end_date")
+    Date end_date;
 
     public Reservation(){};
 
-    public Reservation(Integer id_client, Integer id_room, Date start, Date end) {
+    public Reservation(Integer id_client, Integer id_room, Date start_date, Date end_date) {
         this.id_client = id_client;
         this.id_room = id_room;
-        this.start = start;
-        this.end = end;
+        this.start_date = start_date;
+        this.end_date = end_date;
     }
 
     public Integer getId_reservation() {
@@ -54,18 +54,16 @@ public class Reservation {
     }
 
     public Date getStart() {
-        return start;
+        return start_date;
     }
 
     public void setStart(Date start) {
-        this.start = start;
+        this.start_date = start;
     }
 
     public Date getEnd() {
-        return end;
+        return end_date;
     }
 
-    public void setEnd(Date end) {
-        this.end = end;
-    }
+    public void setEnd(Date end) { this.end_date = end; }
 }

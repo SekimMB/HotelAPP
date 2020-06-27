@@ -3,7 +3,7 @@ package com.simple.HotelApp.domain.DTO;
 public class ShowRoomDTO {
     String size;
     Integer id;
-    double price;
+    String price;
 
     public String getSize() {
         return size;
@@ -21,11 +21,11 @@ public class ShowRoomDTO {
         this.id = id;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
