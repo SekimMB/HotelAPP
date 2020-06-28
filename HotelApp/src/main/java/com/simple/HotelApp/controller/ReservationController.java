@@ -15,6 +15,7 @@ public class ReservationController {
         this.rService = services;
     }
 
+    //works more or less
     @CrossOrigin
     @PostMapping(value = "/reservation")
     public String addReservation(@RequestBody NewReservationDTO newreserv) {
@@ -22,6 +23,7 @@ public class ReservationController {
         return "Added reservation";
     }
 
+    //works
     @CrossOrigin
     @DeleteMapping(value = "/reservation{Id}")
     public String removeReservation(@PathVariable int Id) {

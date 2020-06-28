@@ -16,6 +16,7 @@ public class ReceptionistController {
         this.recService = recService;
     }
 
+    //works
     @CrossOrigin
     @PostMapping(value = "/receptionist/newclient")
     public String addClientData(@RequestBody ClientEditDTO addclient) {
@@ -23,16 +24,19 @@ public class ReceptionistController {
         return "Client added";
     }
 
+    //works
     @CrossOrigin
-    @PutMapping(value = "/receptionist/check_in{id_client}{id_room}")
-    public String checkIn(@PathVariable int id_client,int id_room) {
+    @PutMapping(value = "/receptionist/check_in")
+    public String checkIn(@RequestParam int id_client,int id_room) {
         recService.checkIn(id_client,id_room);
+
         return "Client checked in";
     }
 
+    //works
     @CrossOrigin
-    @PutMapping(value = "/receptionist/check_out{id_client}{id_room}")
-    public String checkOut(@PathVariable int id_client,int id_room) {
+    @PutMapping(value = "/receptionist/check_out")
+    public String checkOut(@RequestParam int id_client,int id_room) {
         recService.checkOut(id_client,id_room);
         return "Client checked out";
     }

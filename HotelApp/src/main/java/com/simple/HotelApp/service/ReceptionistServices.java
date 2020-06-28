@@ -33,12 +33,14 @@ public class ReceptionistServices {
     public void checkIn(Integer clientId,Integer roomId){
         Room roomToUpdate = rooms.getOne(roomId);
         roomToUpdate.setOccupant(clientId);
+        roomToUpdate.setState("Occupied");
         rooms.save(roomToUpdate);
     }
 
     public void checkOut(Integer clientId,Integer roomId){
         Room roomToUpdate = rooms.getOne(roomId);
         roomToUpdate.setOccupant(null);
+        roomToUpdate.setState("Free");
         rooms.save(roomToUpdate);
     }
 }

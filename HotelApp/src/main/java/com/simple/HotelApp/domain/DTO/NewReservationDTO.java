@@ -7,8 +7,8 @@ import java.text.SimpleDateFormat;
 public class NewReservationDTO {
     Integer id_client;
     Integer id_room;
-    Date start_date;
-    Date end_date;
+    String start_date;
+    String end_date;
 
 
     public Integer getId_client() {
@@ -27,20 +27,20 @@ public class NewReservationDTO {
         this.id_room = id_room;
     }
 
-    public Date getStart() {
+    public String getStart_date() {
         return start_date;
     }
 
-    public void setStart(String start) throws ParseException {
-        Date date1= (Date) new SimpleDateFormat("dd/MM/yyyy").parse(start);
-        this.start_date = date1;
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
     }
 
-    public Date getEnd() {
+    public String getEnd_date() {
         return end_date;
     }
 
-    public void setEnd(String end) throws ParseException {
-        Date date1= (Date) new SimpleDateFormat("dd/MM/yyyy").parse(end);
-        this.end_date = date1; }
+    public void setEnd_date(String end_date) {
+        this.end_date = end_date;
+    }
 }
+// gdzie ten twój kod dac ?

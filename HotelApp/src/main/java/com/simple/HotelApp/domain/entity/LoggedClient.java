@@ -21,13 +21,13 @@ public class LoggedClient {
     @Column(name = "email")
     String email;
     @Column(name = "bank_acc_number")
-    Integer bank_acc_number;
+    String bank_acc_number;
     @Column(name = "phone")
-    Integer phone;
+    String phone;
 
     public LoggedClient(){};
 
-    public LoggedClient(String login, String password, String name, String surname, String email, int bank_acc_number, int phone) {
+    public LoggedClient(String login, String password, String name, String surname, String email, String bank_acc_number, String phone) {
         this.login = login;
         this.password = password;
         this.name = name;
@@ -61,11 +61,11 @@ public class LoggedClient {
         return email;
     }
 
-    public int getBank_acc_number() {
+    public String getBank_acc_number() {
         return bank_acc_number;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -93,11 +93,11 @@ public class LoggedClient {
         this.email = email;
     }
 
-    public void setBank_acc_number(int bank_acc_number) {
+    public void setBank_acc_number(String bank_acc_number) {
         this.bank_acc_number = bank_acc_number;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }
