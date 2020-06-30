@@ -71,6 +71,36 @@ public class ClientController {
         return cService.getAvailableRooms();
     }
 
+    @CrossOrigin
+    @GetMapping(value ="/client/filterrooms_sizerange")
+    public List<ShowRoomDTO> getFilteredRooms3part(@RequestParam String size, String pricestart, String priceend){
+        return cService.getFilteredRooms3part(size,pricestart,priceend);
+    }
+
+    @CrossOrigin
+    @GetMapping(value ="/client/filterrooms_size")
+    public List<ShowRoomDTO> getFilteredRoomsSize(@RequestParam String size){
+        return cService.getFilteredRoomsSize(size);
+    }
+
+    @CrossOrigin
+    @GetMapping(value ="/client/filterrooms_range")
+    public List<ShowRoomDTO> getFilteredRoomsRange(@RequestParam  String pricestart, String priceend){
+        return cService.getFilteredRoomsRange(pricestart,priceend);
+    }
+
+    @CrossOrigin
+    @GetMapping(value ="/client/filterrooms_sizestart")
+    public List<ShowRoomDTO> getFilteredRoomsSizeStart(@RequestParam String size, String pricestart){
+        return cService.getFilteredRoomsSizeStart(size,pricestart);
+    }
+
+    @CrossOrigin
+    @GetMapping(value ="/client/filterrooms_sizeend")
+    public List<ShowRoomDTO> getFilteredRoomsSizeEnd(@RequestParam String pricestart, String priceend){
+        return cService.getFilteredRoomsSizeEnd(pricestart,priceend);
+    }
+
     // 1 new loggin
     //
     @CrossOrigin

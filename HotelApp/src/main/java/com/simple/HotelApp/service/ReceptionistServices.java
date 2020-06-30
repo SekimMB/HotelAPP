@@ -21,11 +21,10 @@ public class ReceptionistServices {
 
     public void addClientData(ClientEditDTO cedit){
         Client newclient = new Client();
-        newclient.setId(cedit.getId());
+        newclient.setName(cedit.getName());
+        newclient.setSurname(cedit.getSurname());
         newclient.setPhone(cedit.getPhone());
         newclient.setEmail(cedit.getEmail());
-        newclient.setSurname(cedit.getSurname());
-        newclient.setName(cedit.getName());
         newclient.setAccount_number(cedit.getBank_acc_number());
         temp_client.save(newclient);
     }
@@ -43,4 +42,5 @@ public class ReceptionistServices {
         roomToUpdate.setState("Free");
         rooms.save(roomToUpdate);
     }
+
 }

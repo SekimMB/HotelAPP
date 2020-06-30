@@ -11,6 +11,10 @@ public class Client {
     Integer id;
     @Column(name = "name")
     String name;
+    @Column(name = "login")
+    String login;
+    @Column(name = "password")
+    String password;
     @Column(name = "surname")
     String surname;
     @Column(name = "email")
@@ -22,9 +26,12 @@ public class Client {
 
     public Client(){};
 
-    public Client(String name, String surname, String email, String account_number, String phone) {
+    public Client(String name, String surname, String email, String account_number, String phone,
+    String login, String password) {
         this.name = name;
         this.surname = surname;
+        this.login = login;
+        this.password = password;
         this.email = email;
         this.account_number = account_number;
         this.phone = phone;
@@ -77,4 +84,12 @@ public class Client {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public String getLogin() { return login; }
+
+    public void setLogin(String login) { this.login = login; }
+
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
 }

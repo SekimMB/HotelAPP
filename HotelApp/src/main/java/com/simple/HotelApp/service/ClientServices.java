@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static java.lang.Integer.valueOf;
+
 @Service
 public class ClientServices {
     private final ClientRepository temp_client;
@@ -76,6 +78,99 @@ public class ClientServices {
         List<Room> availablerooms = rooms.findAll();
         availablerooms = availablerooms.stream()
                 .filter(e-> e.getState().equals("Free")).collect(Collectors.toList());
+        showAvailableRooms = availablerooms.stream()
+                .map(newroom->{
+                    ShowRoomDTO showroom = new ShowRoomDTO();
+                    showroom.setId(newroom.getId_room());
+                    showroom.setPrice(newroom.getPrice());
+                    showroom.setSize(newroom.getSize());
+                    return showroom;
+                })
+                .collect(Collectors.toList());
+        return showAvailableRooms;
+    }
+
+    public List<ShowRoomDTO> getFilteredRooms3part(String size, String pricestart,String priceend){
+        List<ShowRoomDTO> showAvailableRooms;
+        List<Room> availablerooms = rooms.findAll();
+        availablerooms = availablerooms.stream()
+                .filter(e-> e.getSize().equals(size))
+                .filter(e-> Integer.parseInt(e.getPrice())>=Integer.parseInt(pricestart) && Integer.parseInt(e.getPrice())<=Integer.parseInt(priceend))
+                .collect(Collectors.toList());
+        showAvailableRooms = availablerooms.stream()
+                .map(newroom->{
+                    ShowRoomDTO showroom = new ShowRoomDTO();
+                    showroom.setId(newroom.getId_room());
+                    showroom.setPrice(newroom.getPrice());
+                    showroom.setSize(newroom.getSize());
+                    return showroom;
+                })
+                .collect(Collectors.toList());
+        return showAvailableRooms;
+    }
+
+    public List<ShowRoomDTO> getFilteredRoomsSize(String size){
+        List<ShowRoomDTO> showAvailableRooms;
+        List<Room> availablerooms = rooms.findAll();
+        availablerooms = availablerooms.stream()
+                .filter(e-> e.getSize().equals(size))
+                .collect(Collectors.toList());
+        showAvailableRooms = availablerooms.stream()
+                .map(newroom->{
+                    ShowRoomDTO showroom = new ShowRoomDTO();
+                    showroom.setId(newroom.getId_room());
+                    showroom.setPrice(newroom.getPrice());
+                    showroom.setSize(newroom.getSize());
+                    return showroom;
+                })
+                .collect(Collectors.toList());
+        return showAvailableRooms;
+    }
+
+    public List<ShowRoomDTO> getFilteredRoomsRange(String pricestart,String priceend){
+        List<ShowRoomDTO> showAvailableRooms;
+        List<Room> availablerooms = rooms.findAll();
+        availablerooms = availablerooms.stream()
+                .filter(e-> Integer.parseInt(e.getPrice())>=Integer.parseInt(pricestart) && Integer.parseInt(e.getPrice())<=Integer.parseInt(priceend))
+                .collect(Collectors.toList());
+        showAvailableRooms = availablerooms.stream()
+                .map(newroom->{
+                    ShowRoomDTO showroom = new ShowRoomDTO();
+                    showroom.setId(newroom.getId_room());
+                    showroom.setPrice(newroom.getPrice());
+                    showroom.setSize(newroom.getSize());
+                    return showroom;
+                })
+                .collect(Collectors.toList());
+        return showAvailableRooms;
+    }
+
+    public List<ShowRoomDTO> getFilteredRoomsSizeStart(String size, String pricestart){
+        List<ShowRoomDTO> showAvailableRooms;
+        List<Room> availablerooms = rooms.findAll();
+        availablerooms = availablerooms.stream()
+                .filter(e-> e.getSize().equals(size))
+                .filter(e-> Integer.parseInt(e.getPrice())>=Integer.parseInt(pricestart))
+                .collect(Collectors.toList());
+        showAvailableRooms = availablerooms.stream()
+                .map(newroom->{
+                    ShowRoomDTO showroom = new ShowRoomDTO();
+                    showroom.setId(newroom.getId_room());
+                    showroom.setPrice(newroom.getPrice());
+                    showroom.setSize(newroom.getSize());
+                    return showroom;
+                })
+                .collect(Collectors.toList());
+        return showAvailableRooms;
+    }
+
+    public List<ShowRoomDTO> getFilteredRoomsSizeEnd(String size,String priceend){
+        List<ShowRoomDTO> showAvailableRooms;
+        List<Room> availablerooms = rooms.findAll();
+        availablerooms = availablerooms.stream()
+                .filter(e-> e.getSize().equals(size))
+                .filter(e-> Integer.parseInt(e.getPrice())<=Integer.parseInt(priceend))
+                .collect(Collectors.toList());
         showAvailableRooms = availablerooms.stream()
                 .map(newroom->{
                     ShowRoomDTO showroom = new ShowRoomDTO();
